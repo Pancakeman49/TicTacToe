@@ -28,7 +28,7 @@ namespace TicTacToe
         private void InitializeGrid()
         {
             Grid.Show();
-            Grid.BackColor = Color.LightCoral;
+            Grid.BackColor = Color.Transparent;
             Grid.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
         }
         private void InitilazeCells()
@@ -175,5 +175,32 @@ namespace TicTacToe
             button.Hide();
             labelend.Hide();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void ChangeCellColors(Label labelOne, Label labelTwo, Label labelThree, Color color) 
+        {
+            labelOne.BackColor = color;
+            labelTwo.BackColor = color;
+            labelThree.BackColor = color;
+        }
+        private void checksomething()
+        {
+            if (label1.Text == label2.Text && label1.Text == label3.Text && label1.Text != "")
+            {
+                ChangeCellColors(label1, label2, label3, Color.Purple);
+            }
+        }
     }
+    
 }
