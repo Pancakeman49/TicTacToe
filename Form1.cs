@@ -73,10 +73,11 @@ namespace TicTacToe
                 {
                     label.Text = "O";
                 }
+                PlaySound("Click");
                 WinCheck();
                 DrawCheck();
                 xPlayerTurn = !xPlayerTurn;
-                PlaySound("Click");
+                
             }
 
         }
