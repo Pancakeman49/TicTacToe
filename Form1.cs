@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -193,6 +194,8 @@ namespace TicTacToe
             button.Hide();
             labelend.Hide();
             labelbord.Show();
+            SoundPlayer player = new SoundPlayer();
+            player.Stop();
         }
         private void PlaySound(string soundName)
         {
