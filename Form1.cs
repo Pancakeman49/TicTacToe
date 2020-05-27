@@ -76,6 +76,7 @@ namespace TicTacToe
                 WinCheck();
                 DrawCheck();
                 xPlayerTurn = !xPlayerTurn;
+                PlaySound("Click");
             }
 
         }
@@ -146,6 +147,7 @@ namespace TicTacToe
             {
                 labelend.Text = "Draw :(";
                 GameReset();
+                PlaySound("Draw");
             }
         }
         private void GameOver()
@@ -174,6 +176,12 @@ namespace TicTacToe
             InitilazeCells();
             button.Hide();
             labelend.Hide();
+        }
+        private void PlaySound(string soundName)
+        {
+            System.IO.Stream str = (System.IO.Stream)Properties.Resources.ResourceManager.GetObject(soundName);
+            System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
+            snd.Play();
         }
 
 
