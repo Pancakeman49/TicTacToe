@@ -38,6 +38,7 @@ namespace TicTacToe
             {
                 labelName = "label" + i;
                 Grid.Controls[labelName].Text = string.Empty;
+                Grid.Controls[labelName].Font = new Font("Javanese Text", 48);
             }
         }
         private void CreateButtonNLabel()
@@ -54,10 +55,21 @@ namespace TicTacToe
             Controls.Add(labelend);
             labelend.Width = 200;
             labelend.Height = 200;
-            labelend.Location = new Point(ClientSize.Width / 2 - button.Width + 10, ClientSize.Height / 2 - button.Height - 50);
-            labelend.Font = new Font("Courier New", 30);
+            labelend.Location = new Point(ClientSize.Width / 2 - button.Width - 9, ClientSize.Height / 2 - button.Height - 50);
+            labelend.Font = new Font("Javanese Text", 30);
             labelend.Anchor = (AnchorStyles.None);
             labelend.Hide();
+
+            labelbord.Anchor = (AnchorStyles.Top);
+            labelbord.Location = new Point(ClientSize.Width / 2 - labelbord.Width - 20, 0);
+            if (xPlayerTurn)
+            {
+                labelbord.Text = "O's Turn";
+            }
+            else
+            {
+                labelbord.Text = "X's Turn";
+            }
         }
 
         private void Player_Click(object sender, EventArgs e)
@@ -67,10 +79,12 @@ namespace TicTacToe
             {
                 if (xPlayerTurn)
                 {
+                    labelbord.Text = "O's Turn";
                     label.Text = "X";
                 }
                 else
                 {
+                    labelbord.Text = "X's Turn";
                     label.Text = "O";
                 }
                 PlaySound("Click");
@@ -167,6 +181,7 @@ namespace TicTacToe
         private void GameReset()
         {
             Grid.Hide();
+            labelbord.Hide();
             button.Show();
             labelend.Show();
 
@@ -177,6 +192,7 @@ namespace TicTacToe
             InitilazeCells();
             button.Hide();
             labelend.Hide();
+            labelbord.Show();
         }
         private void PlaySound(string soundName)
         {
@@ -184,7 +200,6 @@ namespace TicTacToe
             System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
             snd.Play();
         }
-
 
 
 
