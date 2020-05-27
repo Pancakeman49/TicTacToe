@@ -129,24 +129,24 @@ namespace TicTacToe
                 if (i == 3 || i == 6 || i == 9)
                 {
                     hLine3 += Grid.Controls[labelName2].Text;        // this is worse than just writing all the options label2 == labe2 && label2 == label3 ...
-                }
-                if (i == 1 || i == 5 || i == 9)
-                {
-                    dLine1 += Grid.Controls[labelName2].Text;
-                }
-                if (i == 3 || i == 5 || i == 7)
-                {
-                    dLine2 += Grid.Controls[labelName2].Text;
-                }
-                if (hLine1 == "XXX" || hLine1 == "OOO" || 
-                    hLine2 == "XXX" || hLine2 == "OOO" || 
-                    hLine3 == "XXX" || hLine3 == "OOO" || 
-                    dLine1 == "XXX" || dLine1 == "OOO" || 
-                    dLine2 == "XXX" || dLine2 == "OOO")
-                {
-                    GameOver();
-                    return;
-                }
+                }                                                    // stupid code
+                if (i == 1 || i == 5 || i == 9)                      // i dont like it 
+                {                                                    // ugh
+                    dLine1 += Grid.Controls[labelName2].Text;        // TIC TAC TOE TIME
+                }                                                    //         #         #
+                if (i == 3 || i == 5 || i == 7)                      //         #         #
+                {                                                    //         #         #
+                    dLine2 += Grid.Controls[labelName2].Text;        //         #         #
+                }                                                    //#############################
+                if (hLine1 == "XXX" || hLine1 == "OOO" ||            //         #         #
+                    hLine2 == "XXX" || hLine2 == "OOO" ||            //         #         #
+                    hLine3 == "XXX" || hLine3 == "OOO" ||            //         #         #
+                    dLine1 == "XXX" || dLine1 == "OOO" ||            //         #         #
+                    dLine2 == "XXX" || dLine2 == "OOO")              //#############################
+                {                                                    //         #         #
+                    GameOver();                                      //         #         #
+                    return;                                          //         #         #
+                }                                                    //         #         #
             }
         }
         private void DrawCheck()
