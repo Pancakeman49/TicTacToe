@@ -145,9 +145,9 @@ namespace TicTacToe
                 label8.Text != string.Empty && // i hate this
                 label9.Text != string.Empty)
             {
+                PlaySound("Draw");
                 labelend.Text = "Draw :(";
                 GameReset();
-                PlaySound("Draw");
             }
         }
         private void GameOver()
@@ -196,7 +196,7 @@ namespace TicTacToe
 
 
 
-        private void ChangeCellColors(Label labelOne, Label labelTwo, Label labelThree, Color color) 
+        private void ChangeCellColors(Label labelOne, Label labelTwo, Label labelThree, Color color) /// ignore
         {
             labelOne.BackColor = color;
             labelTwo.BackColor = color;
