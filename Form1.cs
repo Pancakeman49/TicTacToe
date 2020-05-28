@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -227,6 +228,11 @@ namespace TicTacToe
             {
                 ChangeCellColors(label1, label2, label3, Color.Purple);
             }
+        }
+
+        private void secret_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         }
     }
     

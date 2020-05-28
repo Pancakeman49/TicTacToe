@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelbord = new System.Windows.Forms.Label();
+            this.secret = new System.Windows.Forms.Button();
             this.Grid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -205,11 +206,22 @@
             this.labelbord.TabIndex = 1;
             this.labelbord.Text = "wat";
             // 
+            // secret
+            // 
+            this.secret.Location = new System.Drawing.Point(13, 13);
+            this.secret.Name = "secret";
+            this.secret.Size = new System.Drawing.Size(75, 23);
+            this.secret.TabIndex = 2;
+            this.secret.Text = "Do not press";
+            this.secret.UseVisualStyleBackColor = true;
+            this.secret.Click += new System.EventHandler(this.secret_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 661);
+            this.Controls.Add(this.secret);
             this.Controls.Add(this.labelbord);
             this.Controls.Add(this.Grid);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -235,6 +247,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelbord;
+        private System.Windows.Forms.Button secret;
     }
 }
 
