@@ -35,12 +35,13 @@ namespace TicTacToe
         }
         private void InitilazeCells()
         {
-            string labelName;
+            string pictureName;
             for (int i = 1; i < 10; i++)
             {
-                labelName = "label" + i;
-                Grid.Controls[labelName].Text = string.Empty;
-                Grid.Controls[labelName].Font = new Font("Javanese Text", 48);
+                pictureName = "pictureBox" + i;
+                Grid.Controls[pictureName].Tag = string.Empty;
+                Grid.Controls[pictureName].BackColor = Color.Transparent;
+
             }
         }
         private void CreateButtonNLabel()
@@ -76,18 +77,18 @@ namespace TicTacToe
 
         private void Player_Click(object sender, EventArgs e)
         {
-            Label label = (Label)sender;
-            if (label.Text == string.Empty)
+            PictureBox picture = (PictureBox)sender;
+            if (picture.Tag == string.Empty)
             {
                 if (xPlayerTurn)
                 {
                     labelbord.Text = "O's Turn";
-                    label.Text = "X";
+                    picture.Tag = "X";
                 }
                 else
                 {
                     labelbord.Text = "X's Turn";
-                    label.Text = "O";
+                    picture.Tag = "O";
                 }
                 PlaySound("Click");
                 WinCheck();
@@ -99,7 +100,7 @@ namespace TicTacToe
         }
         private void WinCheck()
         {
-            string labelName2;
+            string pictureName2;
             string vLine = null;
             string hLine1 = null;
             string hLine2 = null;
@@ -108,8 +109,8 @@ namespace TicTacToe
             string dLine2 = null;
             for (int i = 1; i < 10; i++)
             {
-                labelName2 = "label" + i;
-                vLine += Grid.Controls[labelName2].Text;
+                pictureName2 = "pictureBox" + i;
+                vLine += Grid.Controls[pictureName2].Tag;
                 if (vLine == "XXX" || vLine == "OOO")
                 {
                     GameOver();
@@ -121,23 +122,23 @@ namespace TicTacToe
                 }
                 if (i == 1 || i == 4 || i == 7)
                 {
-                    hLine1 += Grid.Controls[labelName2].Text;
+                    hLine1 += Grid.Controls[pictureName2].Tag;
                 }
                 if (i == 2 || i == 5 || i == 8)
                 {
-                    hLine2 += Grid.Controls[labelName2].Text;
+                    hLine2 += Grid.Controls[pictureName2].Tag;
                 }
                 if (i == 3 || i == 6 || i == 9)
                 {
-                    hLine3 += Grid.Controls[labelName2].Text;        // this is worse than just writing all the options label2 == labe2 && label2 == label3 ...
+                    hLine3 += Grid.Controls[pictureName2].Tag;        // this is worse than just writing all the options label2 == labe2 && label2 == label3 ...
                 }                                                    // stupid code
                 if (i == 1 || i == 5 || i == 9)                      // i dont like it 
                 {                                                    // ugh
-                    dLine1 += Grid.Controls[labelName2].Text;        // TIC TAC TOE TIME
+                    dLine1 += Grid.Controls[pictureName2].Tag;        // TIC TAC TOE TIME
                 }                                                    //         #         #
                 if (i == 3 || i == 5 || i == 7)                      //         #         #
                 {                                                    //         #         #
-                    dLine2 += Grid.Controls[labelName2].Text;        //         #         #
+                    dLine2 += Grid.Controls[pictureName2].Tag;        //         #         #
                 }                                                    //#############################
                 if (hLine1 == "XXX" || hLine1 == "OOO" ||            //         #         #
                     hLine2 == "XXX" || hLine2 == "OOO" ||            //         #         #
@@ -152,15 +153,15 @@ namespace TicTacToe
         }
         private void DrawCheck()
         {
-            if (label1.Text != string.Empty &&
-                label2.Text != string.Empty &&
-                label3.Text != string.Empty &&
-                label4.Text != string.Empty &&
-                label5.Text != string.Empty &&
-                label6.Text != string.Empty &&
-                label7.Text != string.Empty &&
-                label8.Text != string.Empty && // i hate this
-                label9.Text != string.Empty)
+            if (pictureBox1.Tag != string.Empty &&
+                pictureBox2.Tag != string.Empty &&
+                pictureBox3.Tag != string.Empty &&
+                pictureBox4.Tag != string.Empty &&
+                pictureBox5.Tag != string.Empty &&
+                pictureBox6.Tag != string.Empty &&
+                pictureBox7.Tag != string.Empty &&
+                pictureBox8.Tag != string.Empty && // i hate this
+                pictureBox9.Tag != string.Empty)
             {
                 PlaySound("Draw");
                 labelend.Text = "Draw :(";
@@ -216,19 +217,19 @@ namespace TicTacToe
 
 
 
-        private void ChangeCellColors(Label labelOne, Label labelTwo, Label labelThree, Color color) /// ignore
-        {
-            labelOne.BackColor = color;
-            labelTwo.BackColor = color;
-            labelThree.BackColor = color;
-        }
-        private void checksomething()
-        {
-            if (label1.Text == label2.Text && label1.Text == label3.Text && label1.Text != "")
-            {
-                ChangeCellColors(label1, label2, label3, Color.Purple);
-            }
-        }
+        //private void ChangeCellColors(Label labelOne, Label labelTwo, Label labelThree, Color color)                      /// ignore
+        //{
+        //    labelOne.BackColor = color;
+        //    labelTwo.BackColor = color;
+        //    labelThree.BackColor = color;
+        //}
+        //private void checksomething()
+        //{
+        //    if (label1.Text == label2.Text && label1.Text == label3.Text && label1.Text != "")
+        //    {
+        //        ChangeCellColors(label1, label2, label3, Color.Purple);
+        //  }
+        //}
 
         private void secret_Click(object sender, EventArgs e)
         {
