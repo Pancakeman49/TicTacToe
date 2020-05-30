@@ -19,6 +19,8 @@ namespace TicTacToe
         Button button = new Button();
         Label labelend = new Label();
         string winner;
+        int pictureCounter = 1;
+        PictureBox pic;
         public Form1()
         {
             InitializeComponent();
@@ -39,8 +41,12 @@ namespace TicTacToe
             for (int i = 1; i < 10; i++)
             {
                 pictureName = "pictureBox" + i;
-                Grid.Controls[pictureName].Tag = string.Empty;
-                Grid.Controls[pictureName].BackColor = Color.Transparent;
+                PictureBox pictureBox;
+                pictureBox = (PictureBox)Grid.Controls[pictureName];
+                pictureBox.Tag = string.Empty;
+                pictureBox.BackColor = Color.Transparent;
+                pictureBox.Image = null;
+                
 
             }
         }
@@ -84,19 +90,44 @@ namespace TicTacToe
                 {
                     labelbord.Text = "O's Turn";
                     picture.Tag = "X";
+                    pic = picture;
+                    animations.Start();
                 }
                 else
                 {
                     labelbord.Text = "X's Turn";
                     picture.Tag = "O";
+                    pic = picture;
+                    animations.Start();
                 }
                 PlaySound("Click");
                 WinCheck();
                 DrawCheck();
                 xPlayerTurn = !xPlayerTurn;
-                
             }
-
+        }
+        private void animation()
+        {
+            string pictures;
+            if (pic.Tag == "X")
+            {
+                pictures = "x_frame_0" + pictureCounter.ToString("00");
+                pic.Image = (Image)Properties.Resources.ResourceManager.GetObject(pictures);
+                pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureCounter++;
+            }
+            else
+            {
+                pictures = "o_frame_0" + pictureCounter.ToString("00");
+                pic.Image = (Image)Properties.Resources.ResourceManager.GetObject(pictures);
+                pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureCounter++;
+            }
+            if (pictureCounter > 20)
+            {
+                pictureCounter = 1;
+                animations.Stop();
+            }
         }
         private void WinCheck()
         {
@@ -234,6 +265,11 @@ namespace TicTacToe
         private void secret_Click(object sender, EventArgs e)
         {
             Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        }
+
+        private void animations_Tick(object sender, EventArgs e)
+        {
+            animation();
         }
     }
     
